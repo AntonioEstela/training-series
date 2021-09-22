@@ -11,12 +11,12 @@ const findNumberWithLetter = (input) =>
   input.split(" ").map((item) => {
     const num = item.length - 2;
     const [first, last] = [item.charAt(0), item.slice(-1)];
-    return first + num + last;
+    return (num > 1) ? first.concat(num).concat(last) : item;
   });
 
 findNumberWithLetter(input); // -> ['k8s', 'a11y']
 
-// FACTORIAL NUMBER
+// FACTORIAL NUMBER ==> ARRAY METHODS
 const findFactorialRec = (num) => (num < 2 ? 1 : num * findFactorial(num - 1));
 
 const findFactorial = (num) => {
@@ -37,6 +37,10 @@ findFactorialRec(num); // -> num!
 const arr = [1, 2, 4, 5, 6];
 const names = ["John", "Doe", "Jane", "Roman", "Weller", "Patterson"];
 
-const treatArray = (arr) => arr.map((item, index) => new Object({ id: item, name: names[index] ? names[index] : undefined }));
+const treatArray = (arr) =>
+  arr.map(
+    (item, index) =>
+      new Object({ id: item, name: names[index] })
+  );
 
-treatArray(arr); // -> [{id:1, name:'John'}, {id:2, name:'Doe'}, ...]
+  treatArray(arr); // -> [{id:1, name:'John'}, {id:2, name:'Doe'}, ...]
