@@ -29,12 +29,11 @@ const input = [
     age: 65,
   }
 ];
-
 const arrayOperations = (arr) => {
 
-  const res = arr.filter((item) => item.age).map((item) => item.age).sort(); // Just the age of those objects and then we sort the array
+  const res = arr.filter((item) => item.age !== undefined).map((item) => item.age); // Just the age of those objects
 
-  const [min, max] = [res[0], res[res.length - 1]] // First and last element of the array
+  const [min, max] = [Math.min(...res), Math.max(...res)] // First and last element of the array
 
   return [min, max, (max - min)]; // [13 /* min */, 67 /* max */, 54 /*diff */]
 };
