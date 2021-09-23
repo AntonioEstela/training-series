@@ -24,7 +24,7 @@ const input = [
   }
  */
 const getCountOfElements = (input) => {
-  input.reduce((a, c) => a.concat(c), [])
+  return input.reduce((a, c) => a.concat(c), [])
     .reduce((a, c) => {
       a[c] ? (a[c] += 1) : (a[c] = 1);
       return a;
