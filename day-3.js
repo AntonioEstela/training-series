@@ -6,29 +6,21 @@ const input = [
 
 /* 
   El input llega como una matriz
-  
-  Despues con el primer reduce lo convierto en un solo array:
-  ["a", "b", "c", "c", "d", "f", "d", "f", "a"]
 
-  Como siguiente paso uso un reduce inicializado con un objeto para empezar a contar.
+  Con el .reduce lo que hago es inicializarlo con un objeto con el cual que trabajaremos,
+  luego como "c" es un array y necesito iterarlo para llevar las cuentas de los elementos,
+  utilizo un .map para ir validando si el elemento se encuentra en el objeto "a" y en caso
+  de encontrarlo sumara +1, de lo contrario lo pongo en 1.
 
-  si el elemento actual ya esta en el objeto, lo unico que hacemos es sumar 1,
-  de lo contrario significa que no esta, por lo tanto lo igualamos a 1:
-  {
-    a: 1,
-    b: 1,
-    c: 2,
-    d: 2,
-    f: 2,
-    g: 1,
-  }
+  Despues retorno el objeto para que acumule y poder seguir con la siguiente iteracion.
+  {a: 2, b: 1, c: 2, d: 2, f: 2}
  */
 const getCountOfElements = (input) => {
-  return input.reduce((a, c) => a.concat(c), [])
-    .reduce((a, c) => {
-      a[c] ? (a[c] += 1) : (a[c] = 1);
-      return a;
-    }, {});
+  return input.reduce((a, c) => {
+    c.map((item) => (a[item] ? (a[item] += 1) : (a[item] = 1)));
+
+    return a;
+  }, {});
 };
 
 getCountOfElements(input);
